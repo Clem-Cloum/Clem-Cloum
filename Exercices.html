@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Ma Super App</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" type="text/CSS" href="style.css"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap" rel="stylesheet">
+        <meta name="copyright" content="C"/>
+    </head>
+<header>
+    <!-- menu de navigation -->
+    <nav>
+        <ul>
+            <li><a href="ma-super-app.html"><img src="images/Logo.png"/></a></li>
+            <li>A propos</li>
+            <li>Services</li>
+            <li>L'équipe</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+</header>
+<!-- début du contenu principal / main  -->
+<main>
+<!-- partie 1 -->
+    <section class="section1">
+        <!--<img class="image-section1" src="images/about.jpg@2x.png"> -->
+        <h1>Super App</br><span class="span-h1">L'Application trop super</span></h1>
+    
+        <div class="trait"></div>
+        
+        <div class="cnt-boutons">
+        <!-- éventuellement, mettre les 3 boutons dans une div container -->
+            <button class="bouton1" type="button"><img class="pouce" src="images/thumbs-up.svg"/>Like it</button>
+            <button class="bouton1" type="button"><img class="coeur"src="images/heart-shape-silhouette.svg"/>Try it</button>
+            <button class="bouton1" type="button"><img class="panier" src="images/shopping-cart-black-shape.svg"/>Buy it</button>
+        </div>
+    </section>
+<!-- partie 2 --> <!-- container général-->
+    
+    <div>
+        <h2 class="trucsuper">Elle fait des trucs supers</h2>
+    </div>
+
+    <section class="section2"> 
+        <div class="table">
+            <img class="ronds-rouge" src="images/fork-and-knife-silhouette.svg"/><h3>Mettre la table</h3><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis dignissimos consectetur!</p>
+        </div>
+         <div class="lit">
+            <img class="ronds-rouge" src="images/bed.svg"/><h3>Fait ton lit</h3><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis dignissimos consectetur!</p>
+        </div>
+        <div class="feu">
+            <img class="ronds-rouge" src="images/fire-symbol.svg"/><h3>Allume le feu</h3><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis dignissimos consectetur!</p>
+        </div>
+        <div class="feuilles">
+            <img class="ronds-rouge" src="images/plant-leaf-with-white-details.svg"/><h3>Ramasse les feuilles</h3><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis dignissimos consectetur!</p>
+        </div>
+        <div class="parapluie">
+            <img class="ronds-rouge" src="images/umbrella-black-silhouette.svg"/><h3>Protège de la pluie</h3><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis dignissimos consectetur!</p>
+        </div>
+        <div class="dollar">
+            <img class="ronds-rouge" src="images/dollar-symbol.svg"/><h3>Remplit ton compte</h3><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis dignissimos consectetur!</p>
+        </div>
+    </section>
+
+<!-- partie 3 l'équipe -->
+    <section class="section3">
+        <p class="p-equipe">Les membres de la Super Equipe</p>
+    </section>
+
+ <!-- partie 4 les photos des membres -->
+
+    <section class="section4">
+        <div class="cnt-avaone">
+            <div class="avaone">
+                <img src="images/avaone.jpg.png"/>
+            </div>            
+            <div class="txt-avaone">
+                <h3>Text Align</h3>
+                <button class="bouton2" type="button">
+                    <img class="envelope" src="images/envelope.svg"/>Lui écrire</button>
+            </div>
+        </div>
+        
+        <div class="cnt-avatwo">
+            <div class="avatwo">
+                <img src="images/avatwo.jpg.png"/>
+            </div>
+            <div class="txt-avatwo">
+                <h3>Ava Thar</h3>
+                <button class="bouton2" type="button"><img class="envelope" src="images/envelope.svg"/>Lui écrire</button>
+            </div>    
+        </div>
+        
+        <div class="cnt-avatree">
+            <div class="avatree">
+                <img src="images/avathree.jpg.png"/>
+            </div>
+            <div class="txt-avatree">
+                <h3>Vince Studio</h3>
+                <button class="bouton2" type="button"><img class="envelope" src="images/envelope.svg"/>Lui écrire</button>
+            </div>
+        </div>   
+        
+        <div class="cnt-avafour">
+            <div class="avafour">
+                <img src="images/avafour.jpg.png"/>
+            </div>
+            <div class="txt-avafour">
+                <h3>Chase Bold</h3>
+                <button class="bouton2" type="button"><img class="envelope" src="images/envelope.svg"/>Lui écrire</button>
+            </div>
+        </div>
+        
+    </section>
+
+
+    <!-- partie 5 le formulaire -->
+    <p>Envoyez-nous un message</p>
+
+        <form method="post" action="traitement.php">
+            <p>
+                <label for="pseudo">Votre pseudo : </label>
+                    <input type="text" name="pseudo" id="pseudo" placeholder="Ex : Maman" size="30" maxlength="10" />
+            </p>
+            <p>
+                <label for="mail">Votre adresse mail : </label>
+                    <input type="email" name="mail" id="mail" placeholder="monadresse@perso.com" size="50"/>
+            </p>
+            <p>
+                <textarea name="ameliorer" id="ameliorer" rows="10" cols="50">
+                    Text Area !
+                </textarea> 
+            </p>
+            
+        </form>
+
+
+
+</main>
