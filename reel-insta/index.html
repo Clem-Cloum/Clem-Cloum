@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" data-resolution="portrait">
+<html lang="fr" data-resolution="portrait">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1080, height=1920" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="vendor/gsap.min.js"></script>
     <style>
       * {
         margin: 0;
@@ -19,18 +19,43 @@
         background: #0a0a0a;
       }
       #root {
+        position: relative;
         width: 100%;
         height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
       }
-      #title {
-        color: #f4f4f5;
-        font-size: 72px;
-        font-weight: 600;
-        letter-spacing: -0.03em;
+      /* Chaque moitié est une fenêtre sur une vidéo plein cadre (1080x1920). */
+      .half {
+        position: absolute;
+        top: 0;
+        height: 1920px;
+        overflow: hidden;
+      }
+      .half.gauche {
+        left: 0;
+        width: 540px;
+        z-index: 1;
+      }
+      /* La moitié droite déborde de 30px sur la gauche avec un fondu,
+         pour adoucir le raccord au milieu. */
+      .half.droite {
+        left: 510px;
+        width: 570px;
+        z-index: 2;
+        -webkit-mask-image: linear-gradient(to right, transparent 0, #000 60px);
+        mask-image: linear-gradient(to right, transparent 0, #000 60px);
+      }
+      .half .clip {
+        position: absolute;
+        top: 0;
+        width: 1080px;
+        height: 1920px;
+        object-fit: cover;
+      }
+      .half.gauche .clip {
+        left: 0;
+      }
+      .half.droite .clip {
+        left: -510px;
       }
     </style>
   </head>
@@ -39,15 +64,112 @@
       id="root"
       data-composition-id="main"
       data-start="0"
-      data-duration="10"
+      data-duration="30.3"
       data-width="1080"
       data-height="1920"
     >
-      <h1 id="title" class="clip" data-start="0" data-duration="10" data-track-index="0">Title</h1>
+      <!-- Personnage de gauche (pull vert) -->
+      <div class="half gauche">
+        <!-- Scène 1 : elle parle -->
+        <video
+          id="g1"
+          class="clip" data-layout-allow-overflow
+          data-start="0"
+          data-duration="6.6"
+          data-track-index="0"
+          src="assets/cut/gauche-1.mp4"
+          muted
+          playsinline
+        ></video>
+        <!-- Scène 2 : elle écoute (image figée) -->
+        <img
+          id="g1-fin"
+          class="clip" data-layout-allow-overflow
+          data-start="6.6"
+          data-duration="3.1"
+          data-track-index="0"
+          src="assets/cut/gauche-1-fin.jpg"
+          alt=""
+        />
+        <!-- Scène 3 : elle répond / téléphone -->
+        <video
+          id="g4"
+          class="clip" data-layout-allow-overflow
+          data-start="9.7"
+          data-duration="20.6"
+          data-track-index="0"
+          src="assets/cut/gauche-4.mp4"
+          muted
+          playsinline
+        ></video>
+      </div>
+
+      <!-- Personnage de droite (haut rayé) -->
+      <div class="half droite">
+        <!-- Scène 1 : elle écoute -->
+        <video
+          id="d-ecoute-1"
+          class="clip" data-layout-allow-overflow
+          data-start="0"
+          data-duration="6.6"
+          data-track-index="1"
+          src="assets/cut/droite-ecoute.mp4"
+          muted
+          playsinline
+        ></video>
+        <!-- Scène 2 : elle répond -->
+        <video
+          id="d3"
+          class="clip" data-layout-allow-overflow
+          data-start="6.6"
+          data-duration="3.1"
+          data-track-index="1"
+          src="assets/cut/droite-3.mp4"
+          muted
+          playsinline
+        ></video>
+        <!-- Scène 3 : elle écoute à nouveau -->
+        <video
+          id="d-ecoute-3"
+          class="clip" data-layout-allow-overflow
+          data-start="9.7"
+          data-duration="20.6"
+          data-media-start="6.6"
+          data-track-index="1"
+          src="assets/cut/droite-ecoute.mp4"
+          muted
+          playsinline
+        ></video>
+      </div>
+
+      <!-- Pistes son -->
+      <audio
+        id="a1"
+        data-start="0"
+        data-duration="6.6"
+        data-track-index="2"
+        src="assets/cut/gauche-1.mp4"
+      ></audio>
+      <audio
+        id="a3"
+        data-start="6.6"
+        data-duration="3.1"
+        data-track-index="2"
+        src="assets/cut/droite-3.mp4"
+      ></audio>
+      <audio
+        id="a4"
+        data-start="9.7"
+        data-duration="20.6"
+        data-track-index="2"
+        data-fade-out="0.4"
+        src="assets/cut/gauche-4.mp4"
+      ></audio>
     </div>
     <script>
+      window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      // Example: tl.fromTo("#title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6 }, 0);
+      tl.set({}, {}, 30.3);
       window.__timelines["main"] = tl;
       tl.seek(0);
     </script>
